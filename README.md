@@ -12,6 +12,10 @@ Features include:
 - Automatic description inclusion in help message.
 - Automatic license inclusion in help message.
 
+## Acknowledgement
+
+- https://stackoverflow.com/a/59087509
+
 ## License
 
 [makext](https://github.com/mitjafelicijan/makext) was written by [Mitja
