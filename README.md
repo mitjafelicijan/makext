@@ -11,13 +11,6 @@ tasks.
 > meant to really be a task runner. Keep that in mind. However, dispite
 > that, I constantly find myself using it as such.
 
-These extensions push the boundaries of GNU Make, which was originally
-designed for building software projects rather than serving as a
-general-purpose task runner. It's important to keep this in mind while
-using them. However, despite this deviation from its intended purpose,
-I find myself relying on GNU Make as a task runner in various projects.
-
-
 Features include:
 
 - Enhanced help message generation with support for custom descriptions.
