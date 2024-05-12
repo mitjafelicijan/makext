@@ -30,7 +30,7 @@ Tested on:
 - macOS Sonoma 14.4.1 with GNU Make 3.81
 
 If you have an idea for a new feature [open a new
-issue](/mitjafelicijan/makext/issues/new).
+issue](https://github.com/mitjafelicijan/makext/issues/new).
 
 ## How to use
 
