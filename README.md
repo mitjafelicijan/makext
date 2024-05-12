@@ -21,6 +21,11 @@ Additional features:
 - Automatic description inclusion in help message.
 - Automatic license inclusion in help message.
 
+Tested on:
+
+- GNU Linux Debian 12 with GNU Make 4.3
+- macOS Sonoma 14.4.1 with GNU Make 3.81
+
 ## How to use
 
 First you will need to download `makext.mk` file from the repository to
