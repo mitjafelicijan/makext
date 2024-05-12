@@ -93,22 +93,22 @@ Targets:
 
 You can provide description for the project that will be displayed
 together with `help`. To do this provide this information in the
-`MK_DESCRIPTION` variable.
+`MEX_DESCRIPTION` variable.
 
 Same goes for license information. Provide this information by creating
-`MK_LICENSE` variable.
+`MEX_LICENSE` variable.
 
 If these variables are not present this information will not be displayed
 in the help.
 
 > [!IMPORTANT]
-> Variables `MK_DESCRIPTION` and `MK_LICENSE` must be defined before you
+> Variables `MEX_DESCRIPTION` and `MEX_LICENSE` must be defined before you
 > include `makext.mk` to your `Makefile`. This is needed because the way
 > GNU Make is parsing Makefiles.
 
 ```make
-MK_DESCRIPTION="This provides some additional tools for makefiles."
-MK_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
+MEX_DESCRIPTION="This provides some additional tools for makefiles."
+MEX_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
 
 include makext.mk
 
@@ -143,7 +143,7 @@ be used. If programs are missing recipes can only partially be executed
 leaving project in a potentially broken state.
 
 ```make
-MK_ASSURE="python3 ls tree clang"
+MEX_ASSURE="python3 ls tree clang"
 
 include makext.mk
 
@@ -152,7 +152,7 @@ build-app: .assure
 ```
 
 `.assure` prerequisite will loop over the list of programs defined in
-`MK_ASSURE` variable and in case one is missing will exit `make` with
+`MEX_ASSURE` variable and in case one is missing will exit `make` with
 status code error 1. This will stop executing the recipe and therefore
 not execute anything in target `build-app`.
 

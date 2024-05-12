@@ -24,23 +24,23 @@ endif
 # and adds description and license information if data provided.
 .PHONY: .help
 .help:
-ifdef MK_DESCRIPTION
-	@echo "$(MK_DESCRIPTION)\n" | fmt
+ifdef MEX_DESCRIPTION
+	@echo "$(MEX_DESCRIPTION)\n" | fmt
 endif
 	@echo "Targets:"
 	@grep -vE '^[[:space:]]' $(MAKEFILE_LIST) | grep -E '^.*:.* #' | sed -E 's/(.*):(.*):.*#(.*)/  \2###\3/' | column -t -s '###'
-ifdef MK_LICENSE
-	@echo "\n$(MK_LICENSE)" | fmt
+ifdef MEX_LICENSE
+	@echo "\n$(MEX_LICENSE)" | fmt
 endif
 
-# Checks `MK_ASSURE` variable if all the programs declared actually
+# Checks `MEX_ASSURE` variable if all the programs declared actually
 # exist on a machine. If not this exists make with error.
 .PHONY: .assure
 .assure:
-ifndef MK_ASSURE
-	@echo "Variable MK_ASSURE is not defined. Can not check for programs."
+ifndef MEX_ASSURE
+	@echo "Variable MEX_ASSURE is not defined. Can not check for programs."
 else
-	@for prog in $(shell echo $(MK_ASSURE)); do \
+	@for prog in $(shell echo $(MEX_ASSURE)); do \
 		if ! which $$prog > /dev/null; then \
 			echo "Error: '$$prog' not found on this machine."; \
 			exit 1; \

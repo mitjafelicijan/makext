@@ -1,6 +1,6 @@
-MK_DESCRIPTION="This provides some additional tools for makefiles."
-MK_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
-MK_ASSURE="python3 ls tree clang"
+MEX_DESCRIPTION="This provides some additional tools for makefiles."
+MEX_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
+MEX_ASSURE="python3 ls tree clang"
 
 include makext.mk
 
