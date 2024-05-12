@@ -11,6 +11,8 @@ tasks.
 > meant to really be a task runner. Keep that in mind. However, dispite
 > that, I constantly find myself using it as such.
 
+### Extensions
+
 | Extension   | Description                                         |
 |-------------|-----------------------------------------------------|
 | help        | Displays all targets with a comment in help format. |
