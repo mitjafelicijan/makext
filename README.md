@@ -73,6 +73,7 @@ run-tests:
 This will give us under we execute command `make` the following result.
 
 ```text
+$ make
 Targets:
   build-app                 Build the application
   clean-cache               Clean the cache
@@ -119,6 +120,7 @@ clean-cache: # Clean the cache
 The following example will produce the following result.
 
 ```text
+$ make
 This provides some additional tools for makefiles.
 
 Targets:
