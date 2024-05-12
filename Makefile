@@ -1,5 +1,5 @@
-M_DESCRIPTION="This provides some additional tools for makefiles."
-M_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
+MK_DESCRIPTION="This provides some additional tools for makefiles."
+MK_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
 
 include makext.mk
 

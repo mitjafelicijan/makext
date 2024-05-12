@@ -13,11 +13,11 @@
 # to learn more and contribute to the project.
 
 .help:
-ifdef M_DESCRIPTION
-	@echo "$(M_DESCRIPTION)\n" | fmt
+ifdef MK_DESCRIPTION
+	@echo "$(MK_DESCRIPTION)\n" | fmt
 endif
 	@echo "Targets:"
-	@grep '^.*:.* #' Makefile | sed -E 's/(.*):.*#(.*)/ \1###\2/' | column -t -s '###'
-ifdef M_LICENSE
-	@echo "\n$(M_LICENSE)" | fmt
+	@grep -vE '^[[:space:]]' $(MAKEFILE_LIST) | grep -E '^.*:.* #' | sed -E 's/(.*):.*#(.*)/  \1###\2/' | column -t -s '###'
+ifdef MK_LICENSE
+	@echo "\n$(MK_LICENSE)" | fmt
 endif
