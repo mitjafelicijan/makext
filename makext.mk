@@ -4,11 +4,6 @@
 # improve the build process, manage dependencies, and streamline common
 # tasks.
 #
-# Features include:
-# - Enhanced help message generation with support for custom descriptions.
-# - Automatic description inclusion in help message.
-# - Automatic license inclusion in help message.
-#
 # Visit the GitHub repository at https://github.com/mitjafelicijan/makext
 # to learn more and contribute to the project.
 #
