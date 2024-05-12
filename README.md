@@ -5,6 +5,9 @@ simplifying and enhancing the functionality of Make-based projects. These
 extensions provide additional features and convenience functions to
 improve the overall usage of GNU Make as a task runner.
 
+All the extnstions are written in GNU Make so no other languages are used
+making this very embedable and has zero dependencies other than GNU Make.
+
 > [!NOTE]
 > This extensions are abusing GNU Make in some sense since it was not 
 > meant to really be a task runner. Keep that in mind. However, despite
@@ -140,7 +143,7 @@ The following example will produce the following result.
 
 ```text
 $ make
-This provides some additional tools for makefiles.
+This provides some additional tools for this project.
 
 Targets:
   build-app                 Build the application
