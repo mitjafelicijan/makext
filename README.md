@@ -3,12 +3,11 @@
 Makext is a collection of useful extensions for Makefiles, aimed at
 simplifying and enhancing the functionality of Make-based projects. These
 extensions provide additional features and convenience functions to
-improve the build process, manage dependencies, and streamline common
-tasks.
+improve the overall usage of GNU Make as a task runner.
 
 > [!NOTE]
 > This extensions are abusing GNU Make in some sense since it was not 
-> meant to really be a task runner. Keep that in mind. However, dispite
+> meant to really be a task runner. Keep that in mind. However, despite
 > that, I constantly find myself using it as such.
 
 ### Extensions
@@ -16,7 +15,7 @@ tasks.
 | Extension   | Description                                         |
 |-------------|-----------------------------------------------------|
 | help        | Displays all targets with a comment in help format. |
-| assure      | Check for the existance of programs on a machine.   |
+| assure      | Check for the existence of programs on a machine.   |
 | environment | Loads environmental variables from other files.     |
 
 Additional features:
@@ -56,11 +55,11 @@ help: .help
 
 ## Help extension
 
-This is all that is needed to start using `makext`. One of the extensions
-is `.help` which displays all the targets in the `Makefile` and their
-descriptions which are provided as comments next to the target definition.
+One of the extensions is `.help` which displays all the targets in the
+`Makefile` and their descriptions which are provided as comments next
+to the target definition.
 
-Lets check how and example `Makefile` would look. It
+Lets check how and example `Makefile` would look like. It
 is recommended to use `.PHONY` for targets that are not
 actual files. In the example below I am not doing that
 though, but it is wise to follow that rule. Check [4.6 Phony
@@ -85,7 +84,8 @@ run-tests:
 	@echo "Running tests..."
 ```
 
-This will give us under we execute command `make` the following result.
+This will give us the following result when we execute command `make`
+without any arguments.
 
 ```text
 $ make
@@ -98,7 +98,8 @@ Targets:
 - Targets without defined comment next to the target will be ignored
   from help list. In this case `run-tests` is missing from the list.
 - Targets that start with `.` will also be ignored.
-- Prerequisites in targets will be ommited from the result.
+- Prerequisites in targets will be omitted from the result. See how
+  `clean-cache` is missing from `build-app` target.
 
 ## Description & License information
 
@@ -112,13 +113,16 @@ Same goes for license information. Provide this information by creating
 If these variables are not present this information will not be displayed
 in the help.
 
+Description and license information is also formatted to max 75 characters
+per row.
+
 > [!IMPORTANT]
 > Variables `MEX_DESCRIPTION` and `MEX_LICENSE` must be defined before you
 > include `makext.mk` to your `Makefile`. This is needed because the way
 > GNU Make is parsing Makefiles.
 
 ```make
-MEX_DESCRIPTION="This provides some additional tools for makefiles."
+MEX_DESCRIPTION="This provides some additional tools for this project."
 MEX_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
 
 include makext.mk
@@ -164,14 +168,14 @@ build-app: .assure
 
 `.assure` prerequisite will loop over the list of programs defined in
 `MEX_ASSURE` variable and in case one is missing will exit `make` with
-status code error 1. This will stop executing the recipe and therefore
+error status code 1. This will stop executing the recipe and therefore
 not execute anything in target `build-app`.
 
 ## Environment extension
 
 This extension helps loading of additional environmental files in your
 project. The files should have environmental variables defined in the
-usual way. Seperate each file by a space and that is about it.
+usual way. Separate each file by a space and that is about it.
 
 If a file is missing this will break the execution of make and exit with
 status code 1.
@@ -190,7 +194,7 @@ MEX_ENVIRONMENT="local.env second.env"
 include makext.mk
 
 demo-envars:
-	@echo "Envrionment variables"
+	@echo "Environment variables"
 	@echo "  HOME: $(HOME)"
 	@echo "  TERM: $(TERM)"
 	@echo "  ENV: $(MEX_ENVIRONMENT)"
@@ -202,7 +206,15 @@ After that they can be used in your recipes like all the other variables
 you have. They will however override variables the shell already has
 defined.
 
-## Acknowledgement
+## Alternative tools
+
+- https://github.com/casey/just
+- https://github.com/ruby/rake
+- https://github.com/taskctl/taskctl
+- https://github.com/go-task/task
+- https://github.com/pydoit/doit
+
+## Acknowledgment
 
 - https://stackoverflow.com/a/59087509
 

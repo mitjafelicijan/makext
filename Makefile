@@ -11,7 +11,7 @@ demo-assure: .assure
 	@echo "All good, continuing..."
 
 demo-envars:
-	@echo "Envrionment variables"
+	@echo "Environment variables"
 	@echo "  HOME: $(HOME)"
 	@echo "  TERM: $(TERM)"
 	@echo "  ENV: $(MEX_ENVIRONMENT)"
