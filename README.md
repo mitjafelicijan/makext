@@ -39,13 +39,18 @@ help: .help
 > targets in your `Makefile`. GNU Make will execute first target if
 > no target provided as an argument when calling `make`.
 
-### Help extension
+## Help extension
 
 This is all that is needed to start using `makext`. One of the extensions
 is `.help` which displays all the targets in the `Makefile` and their
 descriptions which are provided as comments next to the target definition.
 
-Lets check how and example `Makefile` would look.
+Lets check how and example `Makefile` would look. It
+is recommended to use `.PHONY` for targets that are not
+actual files. In the example below I am not doing that
+though, but it is wise to follow that rule. Check [4.6 Phony
+Targets](https://www.gnu.org/software/make/manual/make.html#Phony-Targets)
+section in the GNU Make manual.
 
 ```make
 include makext.mk
@@ -67,17 +72,62 @@ run-tests:
 
 This will give us under we execute command `make` the following result.
 
-```
+```text
 Targets:
   build-app                 Build the application
   clean-cache               Clean the cache
   deploy-prod               Deploy to production
-  run-tests                 Run tests
 ```
 
-- Targets without defined comments next to the target will be ignored
-  from help list.
+- Targets without defined comment next to the target will be ignored
+  from help list. In this case `run-tests` is missing from the list.
 - Targets that start with `.` will also be ignored.
+- Prerequisites in targets will be ommited from the result.
+
+## Description & License information
+
+You can provide description for the project that will be displayed
+together with `help`. To do this provide this information in the
+`MK_DESCRIPTION` variable.
+
+Same goes for license information. Provide this information by creating
+`MK_LICENSE` variable.
+
+If these variables are not present this information will not be displayed
+in the help.
+
+> [!IMPORTANT]
+> Variables `MK_DESCRIPTION` and `MK_LICENSE` must be defined before you
+> include `makext.mk` to your `Makefile`. This is needed because the way
+> GNU Make is parsing Makefiles.
+
+```make
+MK_DESCRIPTION="This provides some additional tools for makefiles."
+MK_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
+
+include makext.mk
+
+help: .help
+
+build-app: clean-cache # Build the application
+	@echo "Building the application..."
+
+clean-cache: # Clean the cache
+	@echo "Cleaning the cache..."
+```
+
+The following example will produce the following result.
+
+```text
+This provides some additional tools for makefiles.
+
+Targets:
+  build-app                 Build the application
+  clean-cache               Clean the cache
+
+Released under the BSD two-clause license, see the LICENSE file for
+more information.
+```
 
 ## Acknowledgement
 

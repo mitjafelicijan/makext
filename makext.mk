@@ -11,7 +11,13 @@
 #
 # Visit the GitHub repository at https://github.com/mitjafelicijan/makext
 # to learn more and contribute to the project.
+#
+# `makext` was written by Mitja Felicijan and is released under the BSD
+# two-clause license, see the LICENSE file for more information.
 
+# Help extension that lists all the targets with descriptions
+# and adds description and license information if data provided.
+.PHONY: .help
 .help:
 ifdef MK_DESCRIPTION
 	@echo "$(MK_DESCRIPTION)\n" | fmt
