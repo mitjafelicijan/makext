@@ -1,11 +1,13 @@
 MK_DESCRIPTION="This provides some additional tools for makefiles."
 MK_LICENSE="Released under the BSD two-clause license, see the LICENSE file for more information."
+MK_ASSURE="python3 ls tree clang"
 
 include makext.mk
 
 help: .help
 
-demo: .assure
+demo-assure: .assure
+	@echo "All good, continuing..."
 
 build-app: clean-cache # Build the application
 	@echo "Building the application..."

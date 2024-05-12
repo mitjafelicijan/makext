@@ -15,6 +15,11 @@
 # `makext` was written by Mitja Felicijan and is released under the BSD
 # two-clause license, see the LICENSE file for more information.
 
+# Checks if operating system is Windows and exists with error.
+ifeq ($(OS),Windows_NT)
+$(error makext does not support Windows operating system)
+endif
+
 # Help extension that lists all the targets with descriptions
 # and adds description and license information if data provided.
 .PHONY: .help
@@ -26,4 +31,19 @@ endif
 	@grep -vE '^[[:space:]]' $(MAKEFILE_LIST) | grep -E '^.*:.* #' | sed -E 's/(.*):(.*):.*#(.*)/  \2###\3/' | column -t -s '###'
 ifdef MK_LICENSE
 	@echo "\n$(MK_LICENSE)" | fmt
+endif
+
+# Checks `MK_ASSURE` variable if all the programs declared actually
+# exist on a machine. If not this exists make with error.
+.PHONY: .assure
+.assure:
+ifndef MK_ASSURE
+	@echo "Variable MK_ASSURE is not defined. Can not check for programs."
+else
+	@for prog in $(shell echo $(MK_ASSURE)); do \
+		if ! which $$prog > /dev/null; then \
+			echo "Error: '$$prog' not found on this machine."; \
+			exit 1; \
+		fi; \
+	done
 endif

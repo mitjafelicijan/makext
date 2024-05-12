@@ -11,9 +11,13 @@ tasks.
 > meant to really be a task runner. Keep that in mind. However, dispite
 > that, I constantly find myself using it as such.
 
-Features include:
+| Extension | Description                                         |
+|-----------|-----------------------------------------------------|
+| .help     | Displays all targets with a comment in help format. |
+| .assure   | Check for the existance of programs on a machine.   |
 
-- Enhanced help message generation with support for custom descriptions.
+Additional features:
+
 - Automatic description inclusion in help message.
 - Automatic license inclusion in help message.
 
@@ -130,6 +134,27 @@ Targets:
 Released under the BSD two-clause license, see the LICENSE file for
 more information.
 ```
+
+## Assure extension
+
+Often times project uses multiple programs and to ensure that these
+programs are already installed before recipes are executed `assure` can
+be used. If programs are missing recipes can only partially be executed
+leaving project in a potentially broken state.
+
+```make
+MK_ASSURE="python3 ls tree clang"
+
+include makext.mk
+
+build-app: .assure
+	@echo "Building the application..."
+```
+
+`.assure` prerequisite will loop over the list of programs defined in
+`MK_ASSURE` variable and in case one is missing will exit `make` with
+status code error 1. This will stop executing the recipe and therefore
+not execute anything in target `build-app`.
 
 ## Acknowledgement
 
