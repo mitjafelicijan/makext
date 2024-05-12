@@ -17,7 +17,7 @@ ifdef MK_DESCRIPTION
 	@echo "$(MK_DESCRIPTION)\n" | fmt
 endif
 	@echo "Targets:"
-	@grep -vE '^[[:space:]]' $(MAKEFILE_LIST) | grep -E '^.*:.* #' | sed -E 's/(.*):.*#(.*)/  \1###\2/' | column -t -s '###'
+	@grep -vE '^[[:space:]]' $(MAKEFILE_LIST) | grep -E '^.*:.* #' | sed -E 's/(.*):(.*):.*#(.*)/  \2###\3/' | column -t -s '###'
 ifdef MK_LICENSE
 	@echo "\n$(MK_LICENSE)" | fmt
 endif

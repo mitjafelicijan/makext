@@ -17,6 +17,68 @@ Features include:
 - Automatic description inclusion in help message.
 - Automatic license inclusion in help message.
 
+## How to use
+
+First you will need to download `makext.mk` file from the repository to
+the same directory where you have `Makefile`.
+
+```sh
+wget -O makext.mk https://github.com/mitjafelicijan/makext/raw/master/makext.mk
+```
+
+Now you can include it in your `Makefile`.
+
+```make
+include makext.mk
+
+help: .help
+```
+
+> [!IMPORTANT]
+> Make sure you create first target `help: .help` before any other
+> targets in your `Makefile`. GNU Make will execute first target if
+> no target provided as an argument when calling `make`.
+
+### Help extension
+
+This is all that is needed to start using `makext`. One of the extensions
+is `.help` which displays all the targets in the `Makefile` and their
+descriptions which are provided as comments next to the target definition.
+
+Lets check how and example `Makefile` would look.
+
+```make
+include makext.mk
+
+help: .help
+
+build-app: clean-cache # Build the application
+	@echo "Building the application..."
+
+clean-cache: # Clean the cache
+	@echo "Cleaning the cache..."
+
+deploy-prod: # Deploy to production
+	@echo "Deploying to production..."
+
+run-tests:
+	@echo "Running tests..."
+```
+
+This will give us under we execute command `make` the following result.
+
+```
+Targets:
+  build-app                 Build the application
+  clean-cache               Clean the cache
+  deploy-prod               Deploy to production
+  run-tests                 Run tests
+```
+
+- Targets without defined comments next to the target will be ignored
+  from help list.
+- Targets that start with `.` will also be ignored.
+
 ## Acknowledgement
 
 - https://stackoverflow.com/a/59087509

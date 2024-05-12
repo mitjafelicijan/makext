@@ -7,7 +7,7 @@ help: .help
 
 demo: .assure
 
-build-app: # Build the application
+build-app: clean-cache # Build the application
 	@echo "Building the application..."
 
 clean-cache: # Clean the cache
