@@ -1,4 +1,4 @@
-# Make extensions
+# GNU Make quality of life extensions
 
 Makext is a collection of useful extensions for Makefiles, aimed at
 simplifying and enhancing the functionality of Make-based projects. These
