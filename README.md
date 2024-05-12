@@ -11,10 +11,11 @@ tasks.
 > meant to really be a task runner. Keep that in mind. However, dispite
 > that, I constantly find myself using it as such.
 
-| Extension | Description                                         |
-|-----------|-----------------------------------------------------|
-| .help     | Displays all targets with a comment in help format. |
-| .assure   | Check for the existance of programs on a machine.   |
+| Extension   | Description                                         |
+|-------------|-----------------------------------------------------|
+| help        | Displays all targets with a comment in help format. |
+| assure      | Check for the existance of programs on a machine.   |
+| environment | Loads environmental variables from other files.     |
 
 Additional features:
 
@@ -146,7 +147,7 @@ more information.
 ## Assure extension
 
 Often times project uses multiple programs and to ensure that these
-programs are already installed before recipes are executed `assure` can
+programs are already installed before recipes are executed `.assure` can
 be used. If programs are missing recipes can only partially be executed
 leaving project in a potentially broken state.
 
@@ -163,6 +164,41 @@ build-app: .assure
 `MEX_ASSURE` variable and in case one is missing will exit `make` with
 status code error 1. This will stop executing the recipe and therefore
 not execute anything in target `build-app`.
+
+## Environment extension
+
+This extension helps loading of additional environmental files in your
+project. The files should have environmental variables defined in the
+usual way. Seperate each file by a space and that is about it.
+
+If a file is missing this will break the execution of make and exit with
+status code 1.
+
+```env
+API_KEY=abc123
+SECRET_KEY=def456
+```
+
+By defining `MEX_ENVIRONMENT` variable you can provide additional files
+and they will be loaded automatically.
+
+```make
+MEX_ENVIRONMENT="local.env second.env"
+
+include makext.mk
+
+demo-envars:
+	@echo "Envrionment variables"
+	@echo "  HOME: $(HOME)"
+	@echo "  TERM: $(TERM)"
+	@echo "  ENV: $(MEX_ENVIRONMENT)"
+	@echo "  AUDIO_BUCKET: $(AUDIO_BUCKET)"
+	@echo "  DB_HOST: $(DB_HOST)"
+```
+
+After that they can be used in your recipes like all the other variables
+you have. They will however override variables the shell already has
+defined.
 
 ## Acknowledgement
 

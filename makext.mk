@@ -15,6 +15,13 @@ ifeq ($(OS),Windows_NT)
 $(error makext does not support Windows operating system)
 endif
 
+# Load environmental files from `MEX_ENVIRONMENT`. By default GNU make
+# loads what is already in `env`. This extends it to other files.
+ifdef MEX_ENVIRONMENT
+TEMP_ENV_FILES=$(shell echo $(MEX_ENVIRONMENT) | tr ',' ' ')
+$(foreach file,$(TEMP_ENV_FILES),$(eval include $(file)))
+endif
+
 # Help extension that lists all the targets with descriptions
 # and adds description and license information if data provided.
 .PHONY: .help
