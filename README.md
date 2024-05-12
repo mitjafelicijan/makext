@@ -1,12 +1,17 @@
 # GNU Make Extensions
 
-Makext is a collection of useful extensions for Makefiles, aimed at
-simplifying and enhancing the functionality of Make-based projects. These
-extensions provide additional features and convenience functions to
-improve the overall usage of GNU Make as a task runner.
+Makext is a collection of useful extensions for Makefiles, aimed
+at simplifying and enhancing the functionality of Make-based
+projects. These extensions provide additional features and
+convenience functions to improve the overall usage of [GNU
+Make](https://www.gnu.org/software/make/) as a task runner.
 
 All the extensions are written in GNU Make so no other languages are used
 making this very embedable and has zero dependencies other than GNU Make.
+
+Other than `makext.mk` all the other files in the repository are either
+license or readme files or just testing data that is/are not needed to
+use it.
 
 > [!NOTE]
 > This extensions are abusing GNU Make in some sense since it was not 
