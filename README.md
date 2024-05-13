@@ -217,6 +217,7 @@ defined.
 ## Alternative tools
 
 - https://github.com/casey/just
+- https://github.com/xonixx/makesure
 - https://github.com/ruby/rake
 - https://github.com/taskctl/taskctl
 - https://github.com/go-task/task
