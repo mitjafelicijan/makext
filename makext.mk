@@ -27,12 +27,12 @@ endif
 .PHONY: .help
 .help:
 ifdef MEX_DESCRIPTION
-	@echo "$(MEX_DESCRIPTION)\n" | fmt
+	@printf "%s\n\n" $(MEX_DESCRIPTION) | fmt
 endif
 	@echo "Targets:"
 	@grep -vE '^[[:space:]]' $(MAKEFILE_LIST) | grep -E '^.*:.* #' | sed -E 's/(.*):(.*):.*#(.*)/  \2###\3/' | column -t -s '###'
 ifdef MEX_LICENSE
-	@echo "\n$(MEX_LICENSE)" | fmt
+	@printf "\n%s" $(MEX_LICENSE) | fmt
 endif
 
 # Checks `MEX_ASSURE` variable if all the programs declared actually
@@ -40,7 +40,7 @@ endif
 .PHONY: .assure
 .assure:
 ifndef MEX_ASSURE
-	@echo "Variable MEX_ASSURE is not defined. Can not check for programs."
+	@printf "Variable MEX_ASSURE is not defined. Can not check for programs.\n"
 else
 	@for prog in $(shell echo $(MEX_ASSURE)); do \
 		if ! which $$prog > /dev/null; then \
