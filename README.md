@@ -216,6 +216,7 @@ defined.
 
 ## Alternative tools
 
+- https://github.com/rocky/remake
 - https://github.com/casey/just
 - https://github.com/xonixx/makesure
 - https://github.com/ruby/rake
