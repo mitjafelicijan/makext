@@ -44,7 +44,7 @@ issue](https://github.com/mitjafelicijan/makext/issues/new).
 
 > [!IMPORTANT]
 > If you intend to use this script on Windows machine
-> make sure you have all the [prerequisites](###windows-specific-instructions) installed.
+> make sure you have all the [prerequisites](#windows-specific-instructions) installed.
 
 First you will need to download `makext.mk` file from the repository to
 the same directory where you have `Makefile`.
