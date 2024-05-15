@@ -10,11 +10,6 @@
 # `makext` was written by Mitja Felicijan and is released under the BSD
 # two-clause license, see the LICENSE file for more information.
 
-# Checks if operating system is Windows and exists with error.
-ifeq ($(OS),Windows_NT)
-$(error makext does not support Windows operating system)
-endif
-
 # Load environmental files from `MEX_ENVIRONMENT`. By default GNU make
 # loads what is already in `env`. This extends it to other files.
 ifdef MEX_ENVIRONMENT
