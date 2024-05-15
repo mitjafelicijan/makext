@@ -14,7 +14,7 @@ license or readme files or just testing data that is/are not needed to
 use it.
 
 > [!NOTE]
-> This extensions are abusing GNU Make in some sense since it was not
+> These extensions are abusing GNU Make in some sense since it was not
 > meant to really be a task runner. Keep that in mind. However, despite
 > that, I constantly find myself using it as such.
 
@@ -22,9 +22,9 @@ use it.
 
 | Extension   | Description                                         |
 |-------------|-----------------------------------------------------|
-| help        | Displays all targets with a comment in help format. |
-| assure      | Check for the existence of programs on a machine.   |
-| environment | Loads environmental variables from other files.     |
+| **help**        | Displays all targets with a comment in help format. |
+| **assure**      | Check for the existence of programs on a machine.   |
+| **environment** | Loads environmental variables from other files.     |
 
 Additional features:
 
