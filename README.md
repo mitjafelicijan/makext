@@ -14,11 +14,11 @@ license or readme files or just testing data that is/are not needed to
 use it.
 
 > [!NOTE]
-> This extensions are abusing GNU Make in some sense since it was not 
+> This extensions are abusing GNU Make in some sense since it was not
 > meant to really be a task runner. Keep that in mind. However, despite
 > that, I constantly find myself using it as such.
 
-### Extensions
+## Extensions
 
 | Extension   | Description                                         |
 |-------------|-----------------------------------------------------|
@@ -35,11 +35,16 @@ Tested on:
 
 - GNU Linux Debian 12 with GNU Make 4.3
 - macOS Sonoma 14.4.1 with GNU Make 3.81
+- Windows 10/11 with GNU Make 4.4.1 for Windows32
 
 If you have an idea for a new feature [open a new
 issue](https://github.com/mitjafelicijan/makext/issues/new).
 
 ## How to use
+
+> [!IMPORTANT]
+> If you intend to use this script on Windows machine
+> make sure you have all the [prerequisites](###windows-specific-instructions) installed.
 
 First you will need to download `makext.mk` file from the repository to
 the same directory where you have `Makefile`.
@@ -60,6 +65,19 @@ help: .help
 > Make sure you create first target `help: .help` before any other
 > targets in your `Makefile`. GNU Make will execute first target if
 > no target provided as an argument when calling `make`.
+
+### Windows specific instructions
+
+On Windows OS'es you need the following:
+
+- Git Bash for Windows
+- make
+
+All of the above can be conveniently installed via [Scoop](https://scoop.sh/):
+
+```sh
+scoop install main/git main/make
+```
 
 ## Help extension
 
