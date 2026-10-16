@@ -28,6 +28,7 @@ use it.
 
 Additional features:
 
+- Section grouping in help message via `##` comments.
 - Automatic description inclusion in help message.
 - Automatic license inclusion in help message.
 
@@ -126,6 +127,45 @@ Targets:
 - Targets that start with `.` will also be ignored.
 - Prerequisites in targets will be omitted from the result. See how
   `clean-cache` is missing from `build-app` target.
+
+### Target Grouping (Sections)
+
+You can group your targets into distinct, named sections to keep larger Makefiles clean and organized. To define a new section, simply add a comment line starting with `##` before the targets in that section.
+
+Here is an example `Makefile` showing target grouping:
+
+```make
+include makext.mk
+
+## General
+help: .help # Shows this help message
+
+## Development Run
+launcher/run: # Runs launcher in development mode
+client/run: # Runs game client in development mode
+
+## Development Build
+launcher/build: # Builds launcher to build/launcher
+client/build: # Builds client to build/client
+```
+
+This will produce the following beautifully aligned and grouped output when running `make`:
+
+```text
+$ make
+Targets:
+
+General
+  help                      Shows this help message
+
+Development Run
+  launcher/run              Runs launcher in development mode
+  client/run                Runs game client in development mode
+
+Development Build
+  launcher/build            Builds launcher to build/launcher
+  client/build              Builds client to build/client
+```
 
 ## Description & License information
 

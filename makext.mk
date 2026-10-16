@@ -25,7 +25,7 @@ ifdef MEX_DESCRIPTION
 	@printf "%s\n\n" $(MEX_DESCRIPTION) | fmt
 endif
 	@echo "Targets:"
-	@grep -vE '^[[:space:]]' $(MAKEFILE_LIST) | grep -E '^.*:.* #' | sed -E 's/(.*):(.*):.*#(.*)/  \2###\3/' | column -t -s '###'
+	@grep -vE '^[[:space:]]' $(MAKEFILE_LIST) | grep -E '^.*:.* #|^.*:##.*' | sed -E -e 's/([^:]*:)?##[[:space:]]*(.*)/###\n\2###/' -e 's/([^:]*):([^:]*):.*#(.*)/  \2###\3/' | column -t -s '###' | sed 's/[[:space:]]*$$//'
 ifdef MEX_LICENSE
 	@printf "\n%s" $(MEX_LICENSE) | fmt
 endif
