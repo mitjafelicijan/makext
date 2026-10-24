@@ -34,6 +34,7 @@ Additional features:
 
 Tested on:
 
+- Void Linux with GNU Make 4.4.1
 - GNU Linux Debian 12 with GNU Make 4.3
 - macOS Sonoma 14.4.1 with GNU Make 3.81
 - Windows 10/11 with GNU Make 4.4.1 for Windows32
