@@ -25,6 +25,7 @@ use it.
 | **help**        | Displays all targets with a comment in help format. |
 | **assure**      | Check for the existence of programs on a machine.   |
 | **environment** | Loads environmental variables from other files.     |
+| **system**      | Automatically detects host OS and CPU architecture. |
 
 Additional features:
 
@@ -272,6 +273,36 @@ demo-envars:
 After that they can be used in your recipes like all the other variables
 you have. They will however override variables the shell already has
 defined.
+
+## System detection
+
+`makext.mk` automatically detects the host operating system and CPU architecture on load. This is especially useful for setting platform-specific variables or running platform-specific recipes.
+
+The following variables are automatically made available to your Makefile:
+
+| Variable | Description | Example Values |
+| --- | --- | --- |
+| `MEX_OS` | The detected host operating system. | `linux`, `macos`, `windows`, `unknown` |
+| `MEX_ARCH` | The CPU architecture of the machine. | `amd64`, `arm64`, `unknown` |
+| `MEX_SYSTEM` | Combined operating system and CPU architecture (`$(MEX_OS)_$(MEX_ARCH)`). | `linux_amd64`, `macos_arm64` |
+
+### Example usage
+
+You can conditionally run recipes or set variables based on the detected platform:
+
+```make
+include makext.mk
+
+# Platform-specific build setting
+ifeq ($(MEX_OS),linux)
+    # Set Linux-specific build flags
+    BUILD_FLAGS := -tags netgo
+endif
+
+build: # Build the application for the host system
+	@echo "Building for $(MEX_SYSTEM)..."
+	go build $(BUILD_FLAGS) -o build/app main.go
+```
 
 ## Alternative tools
 

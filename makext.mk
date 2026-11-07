@@ -44,3 +44,9 @@ else
 		fi; \
 	done
 endif
+
+# Detect the host operating system and CPU architecture.
+MEX_OS := $(if $(filter Windows_NT,$(OS)),windows,$(if $(filter Linux,$(shell uname -s)),linux,$(if $(filter Darwin,$(shell uname -s)),macos,unknown)))
+MEX_MACHINE := $(shell uname -m)
+MEX_ARCH := $(if $(filter x86_64 amd64,$(MEX_MACHINE)),amd64,$(if $(filter aarch64 arm64,$(MEX_MACHINE)),arm64,$(if $(MEX_MACHINE),$(MEX_MACHINE),unknown)))
+MEX_SYSTEM := $(MEX_OS)_$(MEX_ARCH)
